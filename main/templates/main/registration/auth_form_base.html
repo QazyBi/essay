@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Essy</title>
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/auth_form_styling.css' %}">
+  </head>
+  <body>
+    {% include 'main/navbar.html' %}
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="wrapper fadeInDown">
+            <div id="formContent">
+              {% block check_error %}
+              {% endblock %}
+
+              <!-- Icon -->
+              <div class="fadeIn first">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxbFMRqFVH7mFWOhob7-LoKdp_JOG3IENkVz2PjNEdRA_-6EVO9I8llJZbqCVurNQ59Z_DN8FhM04oPZ254xFdbIMc-XXj&usqp=CAU" id="icon" alt="User Icon" />
+              </div>
+              
+              {% block form %}
+              {% endblock %}
+              
+              {% block footer %}
+              {% endblock %}
+
+            </div>
+        </div>
+    
+        </div>
+      </div>
+    </div>
+  
+  </body>
+</html>

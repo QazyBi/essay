@@ -51,18 +51,18 @@ def signup(request):
 
 
 def signup_redirect(request):
-    username = request.POST["username"]
-    email = request.POST["email"]
-    password = request.POST["password"]
-    confirm_password = request.POST["confirm_password"]
-
+    username = request.POST.get("username")
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    confirm_password = request.POST.get("confirm_password")
+    print("LOLOLO\n", request.POST, "\nLOLOLO")
     # check whether email has @ character
     # check whether such email and username are not taken
     # check that password has more than 8 characters
 
     # check that password == confirm_password
     if password == confirm_password:
-        print(username)
+        # print(username)
         User.objects.create_user(username=username,
                                  email=email,
                                  password=password)

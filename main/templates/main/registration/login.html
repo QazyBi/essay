@@ -1,37 +1,38 @@
-{% extends "base.html" %}
+{% extends "registration/auth_form_base.html" %}
 
-{% block content %}
-
+{% block check_error %}
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>Your username and password didn't match. Please try again.</p><br>
   {% endif %}
-  
+    
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
+      <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+    {% else %}  
       <p>Please login to see this page.</p>
     {% endif %}
   {% endif %}
-  
-<form method="post" action="{% url 'main:login' %}">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label_tag }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-  </table>
-  <input type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'main:password_reset' %}">Lost password?</a></p>
-<p><a href="{% url 'main:signup' %}">Do no have an account?</a></p>
 {% endblock %}
+
+<!-- Login Form -->
+{% block form %}
+  <form method="post" action="{% url 'main:login' %}">
+    {% csrf_token %}
+
+    <input type="text" id="{{ form.username.id_for_label }}" class="fadeIn second" name="{{ form.username.html_name }}" placeholder="username">
+    <input type="text" id="{{ form.password.id_for_label }}" class="fadeIn third" name="{{ form.password.html_name }}" placeholder="password">
+
+    <input type="submit" class="fadeIn fourth" value="login">
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+{% endblock %}
+
+<!-- Remind Password -->
+{% block footer %}
+  <div id="formFooter">
+    <a class="underlineHover" href="{% url 'main:password_reset' %}">Lost password?</a><br>
+    <a class="underlineHover" href="{% url 'main:signup' %}">Do not have an account?</a>
+  </div>
+{% endblock %}
+
