@@ -25,7 +25,7 @@ SECRET_KEY = '80(yju^1ex^t()ni785cfr@$!xj#t##jhp1!ds#iunx9u+u&tp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['essy.herokuapp.com', '127.0.0.1', 'localhost']
 
 LOGIN_REDIRECT_URL = '/'
 # Application definition
