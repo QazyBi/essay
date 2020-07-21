@@ -1,0 +1,14 @@
+textarea {   
+  border-color: Transparent;
+  display: block;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+  height:auto;
+  padding:50px;
+  width: 100%;
+  font-size: 18px;
+}
+p {
+  font-size: 18px;
+}

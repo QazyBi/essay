@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        {% for task in task_list %}        
+        <div class="col-auto bg-light mb-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ task.category.image_url }}" class="card-img-top" alt="Image not found">
+                <div class="card-header">{{ task.category }}</div>
+                <div class="card-body">
+                    <p class="card-text">{{ task }}</p>
+                    <a href="{% url 'main:ith_task' task.id %}" class="card-link">Write Essay</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

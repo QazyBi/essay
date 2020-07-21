@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<p>HOMEPAGE!</p>
+<div>
+    <a href="{% url 'main:ith_task' 1 %}">Answer to Random Task</a>
+</div>
+{% endblock %}

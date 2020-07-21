@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="card" style="width: 30rem;">
+      <img class="card-img-top" src="https://cdn.vox-cdn.com/thumbor/nKqiLrOuEpxp-meOI5nB0NDtjpo=/0x0:1280x720/1200x800/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/60042087/chloe.0.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ user.first_name}} {{ user.last_name }}</h5>
+        <p class="card-text"><a href="{% url 'main:my_essays' %}">You have {{ essay_number }} essays</a></p>
+        <p class="card-text">Username: {{ user.username }}</p>
+        <p class="card-text">Last Login: {{ user.last_login }}</p>
+        <p class="card-text">Registration Date: {{ user.date_joined }}</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 30rem;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Profile</h5>
+        <form method="post" action="{% url 'main:me_edit' %}">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>User Name</td>
+              <td><input name="username" type="text"/></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><input name="email" type="text"/></td>
+            </tr>
+            <tr>
+              <td>Current Password</td>
+              <td><input name="current_password" type="text"/></td>
+            </tr>
+            <tr>
+              <td>New Password</td>
+              <td><input name="new_password" type="text"/></td>
+            </tr>
+            <tr>
+              <td>Confirm Password</td>
+              <td><input name="confirm_password" type="text"/></td>
+            </tr>
+          </table>
+          <input type="submit" value="Save" />
+          <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}

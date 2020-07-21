@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if error_msg %}
+      <p><strong>{{ error_msg }}</strong></p>
+    {% else %}
+  {% endif %}
+  <!--
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %} -->
+  
+<form method="post" action="{% url 'main:signup_redirect' %}">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>User Name</td>
+      <td><input name="username" type="text"/></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input name="email" type="text"/></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input name="password" type="text"/></td>
+    </tr>
+    <tr>
+      <td>Confirm Password</td>
+      <td><input name="confirm_password" type="text"/></td>
+    </tr>
+  </table>
+  <input type="submit" value="Sign Up" />
+  <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+</form>
+
+<p><a href="{% url 'main:login' %}">Already Have an Account?</a></p>
+
+{% endblock %}

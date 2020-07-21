@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block content %}    
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <textarea>{{ essay.task.title }}</textarea>
+        <hr class="mt-0 mb-4">
+        <textarea readonly rows='9' data-min-rows='9'>{{ essay.text }}</textarea>
+        <script src="{% static 'js/auto_resize_textarea.js' %}"></script>
+    {% endif %}
+{% endblock %}

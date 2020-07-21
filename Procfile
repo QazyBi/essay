@@ -1,0 +1,1 @@
+web: gunicorn essay.wsgi --log-file -
