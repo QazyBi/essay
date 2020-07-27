@@ -8,13 +8,13 @@
       <p><strong>{{ error_msg }}</strong></p>
     {% else %}
 
-      <textarea readonly class="textareas">{{ task.title }}</textarea>
+      <textarea readonly>{{ task.title }}</textarea>
       <hr class="mt-0 mb-4">
       
       <form action="{% url 'main:submit_essay' task.id %}" method="post">
         {% csrf_token %}
 
-        <textarea name="essay" class="textareas" rows='7' placeholder='Write your Answer Here' data-min-rows='7'></textarea>
+        <textarea name="essay" class="write-textarea" rows='7' placeholder='Write your Answer Here' data-min-rows='7'></textarea>
 
         <p class="wordCount">Words: 0 Time: 1 second</p>
 

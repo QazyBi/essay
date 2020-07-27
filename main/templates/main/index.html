@@ -2,8 +2,27 @@
 
 {% block content %}
 
-<p>HOMEPAGE!</p>
-<div>
-    <a href="{% url 'main:ith_task' 1 %}">Answer to Random Task</a>
+<section>
+<div id="region1-left_div">
+    <br>
+    <h1><i>Welcome, this is Essy</i></h1>
+    <pre>
+
+Here you can write essays to
+More than 1000 essay questions
+
+All your essays will be stored
+You can change them later
+Share via social networks
+And Many Many More...
+
+<a href="{% url 'main:ith_task' 1 %}">Answer to Random Task</a>
+    </pre>
 </div>
+<div id="region1-right_div">
+    <img class="region1-image" src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format">
+</div>
+</section>
+<section>
+</section>
 {% endblock %}
