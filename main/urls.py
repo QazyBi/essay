@@ -11,7 +11,7 @@ urlpatterns = [
     path('tasks/<int:task_id>/', views.ith_task, name='ith_task'),
     path('tasks/<int:task_id>/submit', views.submit_essay, name='submit_essay'),
 
-    path(r'signup/', views.signup, name='signup'),
+    path(r'signup/', views.signup_redirect, name='signup'),
     path(r'signup/redirect', views.signup_redirect, name='signup_redirect'),
 
     path(r'^login/$', LoginView.as_view(), name='login'),

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Task, Essay
 from django.contrib.auth.models import User
+from .forms import SignUpForm
 
 
 def homepage(request):
@@ -45,33 +46,18 @@ def submit_essay(request, task_id):
         return HttpResponseRedirect(reverse('main:tasks'))
 
 
-def signup(request):
-    context = {}
-    return render(request, "main/registration/signup.html", context)
-
-
 def signup_redirect(request):
-    username = request.POST.get("username")
-    email = request.POST.get("email")
-    password = request.POST.get("password")
-    confirm_password = request.POST.get("confirm_password")
-    print("LOLOLO\n", request.POST, "\nLOLOLO")
-    # check whether email has @ character
-    # check whether such email and username are not taken
-    # check that password has more than 8 characters
-
-    # check that password == confirm_password
-    if password == confirm_password:
-        # print(username)
-        User.objects.create_user(username=username,
-                                 email=email,
-                                 password=password)
-        return HttpResponseRedirect(reverse('main:login'))
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        context = {}
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('main:login'))
     else:
         context = {
-            "error_msg": "Passwords do not match",
+            'form': SignUpForm()
         }
-        return render(request, "main/registration/signup.html", context)
+    return render(request, "main/registration/signup.html", context)
 
 
 @login_required

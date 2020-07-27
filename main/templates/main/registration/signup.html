@@ -1,10 +1,10 @@
 {% extends "registration/auth_form_base.html" %}
 
 {% block check_error %}
-<!--   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p><br>
+  {% if form.errors %}
+    <p>There is an error. Please try again.</p><br>
   {% endif %}
-    
+    <!-- 
   {% if next %}
     {% if user.is_authenticated %}
       <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
@@ -17,17 +17,16 @@
 
 <!-- Sign up Form -->
 {% block form %}
-  <form method="post" action="{% url 'main:signup_redirect' %}">
+  <form method="post">  <!-- action="{% url 'main:signup_redirect' %}" -->
     {% csrf_token %}
-
     <input type="text" id="{{ form.username.id_for_label }}" class="fadeIn second" name="{{ form.username.html_name }}" placeholder="username">
-    <input type="text" id="{{ form.email.id_for_label }}" class="fadeIn third" name="{{ form.email.html_name }}" placeholder="email">
+    <input type="text" id="{{ form.email.id_for_label }}" class="fadeIn second" name="{{ form.email.html_name }}" placeholder="email">
     
-    <input type="text" id="{{ form.password.id_for_label }}" class="fadeIn fourth" name="{{ form.password.html_name }}" placeholder="password">
-    <input type="text" id="{{ form.confirm_password.id_for_label }}" class="fadeIn fifth" name="{{ form.confirm_password.html_name }}" placeholder="confirm_password">
+    <input type="text" id="{{ form.password1.id_for_label }}" class="fadeIn second" name="{{ form.password1.html_name }}" placeholder="password1">
+    <input type="text" id="{{ form.password2.id_for_label }}" class="fadeIn second" name="{{ form.password2.html_name }}" placeholder="password2">
 
-    <input type="submit" class="fadeIn sixth" value="signup">
-    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="submit" class="fadeIn third" value="signup">
+    <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
   </form>
 {% endblock %}
 
