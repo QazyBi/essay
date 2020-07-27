@@ -16,13 +16,22 @@ You can change them later
 Share via social networks
 And Many Many More...
 
-<a href="{% url 'main:ith_task' 1 %}">Answer to Random Task</a>
+<a id="random_link" href="{% url 'main:ith_task' task_id=1 %}">Answer to Random Task</a>
     </pre>
 </div>
 <div id="region1-right_div">
     <img class="region1-image" src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format">
 </div>
 </section>
-<section>
-</section>
+
+ <!-- Make random among valid task numbers -->
+<script>
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+var rand = 1 + getRandomInt( {{task_count}} );
+var url_mask = "{% url 'main:ith_task' task_id=1 %}".replace(/1/, rand.toString());
+
+document.getElementById("random_link").href = url_mask;
+</script>
 {% endblock %}

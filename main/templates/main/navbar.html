@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'main:homepage' %}">Essy</a>     
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <a class="navbar-brand" href="{% url 'main:homepage' %}">Essy</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    
+    <span class="navbar-toggler-icon"></span>
+  </button>     
+
+    <div class="collapse navbar-collapse"  id="navbarNav">
+      <ul class="nav navbar-nav">
         
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'main:tasks' %}">Tasks</a>
@@ -10,21 +16,32 @@
         {% if user.is_authenticated %}        
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'main:my_essays' %}">My Essays</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'main:me' %}">{{ user}}</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'main:logout' %}">Log Out</a>
-          </li>
+          </li>         
+          
+        </ul>
+
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main:me' %}">{{ user}}</a>
+              </li>
+        
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main:logout' %}">Log Out</a>
+              </li>
+            </ul>
+        </div>
+
         {% else %}
+        <ul class="nav navbar-nav navbar-right">
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'main:login' %}">Log in</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'main:signup' %}">Sign up</a>
           </li>
+        </ul>
         {% endif %}
-      </ul>
+      
     </div>
 </nav>

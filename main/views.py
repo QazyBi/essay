@@ -9,7 +9,10 @@ from .forms import SignUpForm
 
 
 def homepage(request):
-    context = {}
+    count = Task.objects.all().count()
+    context = {
+        "task_count": count,
+    }
     return render(request, "main/index.html", context)
 
 
