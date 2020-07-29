@@ -22,17 +22,15 @@
     <input type="text" id="{{ form.username.id_for_label }}" class="fadeIn second" name="{{ form.username.html_name }}" placeholder="username">
     <input type="text" id="{{ form.email.id_for_label }}" class="fadeIn second" name="{{ form.email.html_name }}" placeholder="email">
     
-    <input type="text" id="{{ form.password1.id_for_label }}" class="fadeIn second" name="{{ form.password1.html_name }}" placeholder="password1">
-    <input type="text" id="{{ form.password2.id_for_label }}" class="fadeIn second" name="{{ form.password2.html_name }}" placeholder="password2">
+    <input type="password" id="{{ form.password1.id_for_label }}" class="fadeIn second" name="{{ form.password1.html_name }}" placeholder="password1">
+    <input type="password" id="{{ form.password2.id_for_label }}" class="fadeIn second" name="{{ form.password2.html_name }}" placeholder="password2">
 
     <input type="submit" class="fadeIn third" value="signup">
-    <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
   </form>
 {% endblock %}
 
-<!-- -->
 {% block footer %}
   <div id="formFooter">
-    <a href="{% url 'main:login' %}">Already Have an Account?</a>
+    <a class="underlineHover" href="{% url 'main:login' %}">Already Have an Account?</a>
   </div>
 {% endblock %}
