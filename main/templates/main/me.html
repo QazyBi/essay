@@ -1,69 +1,60 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile_page_styling.css' %}">
+<!-- Profile Page inspiration https://bootsnipp.com/snippets/4d03W -->
+{% endblock %}
 
 {% block content %}
-<!-- <div class="photo-container">
-  <img src="https://images.unsplash.com/photo-1595907386001-b42da074dd8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80" alt="">
-</div>
- -->
 
-<!-- <div class="parallax-container">
-
-  <div class="background">
-    <img class="background__image" src="https://images.unsplash.com/photo-1595907386001-b42da074dd8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80" />
-  </div>
-  
-  <div class="foreground">
-    <div class="foreground__content">
-      <h1>Oooo, parallax</h1>
+<main class="wrapper">
+  <section class="section parallax parallax-text bg1">
+     <h2><strong>{{ user.first_name}} {{ user.last_name }}</strong></h2>
+     <h4>@{{ user.username }}</h4>
+     
+     <h5><a href="{% url 'main:my_essays' %}"> {{ essay_number }} essays</a></h5>
+     <!-- <h3>Last Login: {{ user.last_login }}</h3> -->
+     <!-- <h3>Registration Date: {{ user.date_joined }}</h3> -->
+  </section>
+  <section class="section static bio-text">
+    <h4>About Me:</h4>
+    <h6>Here should be some text about the person. This text will be retrieved from User's account where will be a new field bio. User can change that bio but for now this field will contain temporary message.</h6>
+  </section>
+  <!-- <section class="section parallax bg2"> -->
+    
+  <!-- <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h5 class="card-title">Edit Profile</h5>
+      <form method="post" action="{% url 'main:me_edit' %}">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>User Name</td>
+            <td><input name="username" type="text"/></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input name="email" type="text"/></td>
+          </tr>
+          <tr>
+            <td>Current Password</td>
+            <td><input name="current_password" type="text"/></td>
+          </tr>
+          <tr>
+            <td>New Password</td>
+            <td><input name="new_password" type="text"/></td>
+          </tr>
+          <tr>
+            <td>Confirm Password</td>
+            <td><input name="confirm_password" type="text"/></td>
+          </tr>
+        </table>
+        <input type="submit" value="Save" />
+        
+      </form>
     </div>
-  </div>
-
-</div> -->
-
-<br>
-<div class="row">
-    <div class="card" style="width: 30rem;">
-      <img class="card-img-top" src="https://cdn.vox-cdn.com/thumbor/nKqiLrOuEpxp-meOI5nB0NDtjpo=/0x0:1280x720/1200x800/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/60042087/chloe.0.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{ user.first_name}} {{ user.last_name }}</h5>
-        <p class="card-text"><a href="{% url 'main:my_essays' %}">You have {{ essay_number }} essays</a></p>
-        <p class="card-text">Username: {{ user.username }}</p>
-        <p class="card-text">Last Login: {{ user.last_login }}</p>
-        <p class="card-text">Registration Date: {{ user.date_joined }}</p>
-      </div>
-    </div>
-
-    <div class="card" style="width: 30rem;">
-      <div class="card-body">
-        <h5 class="card-title">Edit Profile</h5>
-        <form method="post" action="{% url 'main:me_edit' %}">
-          {% csrf_token %}
-          <table>
-            <tr>
-              <td>User Name</td>
-              <td><input name="username" type="text"/></td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td><input name="email" type="text"/></td>
-            </tr>
-            <tr>
-              <td>Current Password</td>
-              <td><input name="current_password" type="text"/></td>
-            </tr>
-            <tr>
-              <td>New Password</td>
-              <td><input name="new_password" type="text"/></td>
-            </tr>
-            <tr>
-              <td>Confirm Password</td>
-              <td><input name="confirm_password" type="text"/></td>
-            </tr>
-          </table>
-          <input type="submit" value="Save" />
-          
-        </form>
-      </div>
-    </div>
-</div>
+  </div> -->
+    
+  <!-- </section> -->
+</main>
 {% endblock %}

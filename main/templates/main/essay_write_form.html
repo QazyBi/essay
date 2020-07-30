@@ -2,6 +2,11 @@
 
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/text_area_styling.css' %}">
+{% endblock %}
+
+
 {% block content %}
     
     {% if error_msg %}

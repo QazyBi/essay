@@ -1,14 +1,19 @@
 {% extends 'main/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/text_area_styling.css' %}">
+{% endblock %}
 
 {% block content %}
- <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12">
-<section>
-<div id="region1-left_div">
-    <br>
-    <h1><i>Welcome, this is Essy</i></h1>
-    <pre>
+     <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+    <section>
+    <div id="region1-left_div">
+        <br>
+        <h1><i>Welcome, this is Essy</i></h1>
+        <pre>
 
 Here you can write essays to
 More than 1000 essay questions
@@ -19,25 +24,25 @@ Share via social networks
 And Many Many More...
 
 <a id="random_link" href="{% url 'main:ith_task' task_id=1 %}">Answer to Random Task</a>
-    </pre>
-</div>
-<div id="region1-right_div">
-    <img class="region1-image" src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format">
-</div>
-</section>
-        </div>
-      </div>
+        </pre>
     </div>
+    <div id="region1-right_div">
+        <img class="region1-image" src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format">
+    </div>
+    </section>
+            </div>
+          </div>
+        </div>
 
-    
- <!-- Make random among valid task numbers -->
-<script>
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-var rand = 1 + getRandomInt( {{task_count}} );
-var url_mask = "{% url 'main:ith_task' task_id=1 %}".replace(/1/, rand.toString());
+        
+     <!-- Make random among valid task numbers -->
+    <script>
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    var rand = 1 + getRandomInt( {{task_count}} );
+    var url_mask = "{% url 'main:ith_task' task_id=1 %}".replace(/1/, rand.toString());
 
-document.getElementById("random_link").href = url_mask;
-</script>
+    document.getElementById("random_link").href = url_mask;
+    </script>
 {% endblock %}
