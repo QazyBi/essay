@@ -34,7 +34,6 @@ def ith_task(request, task_id):
     return render(request, "main/essay_write_form.html", context)
 
 
-# TODO: add here decorator to ensure user authentication
 @login_required
 def submit_essay(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
@@ -56,6 +55,11 @@ def signup_redirect(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('main:login'))
+        else:
+            print(form.errors.as_data())
+            context = {
+                'form': form,
+            }
     else:
         context = {
             'form': SignUpForm()
