@@ -1,7 +1,8 @@
+
 .wrapper {
   /* The height needs to be set to a fixed value for the effect to work.
    * 100vh is the full height of the viewport. */
-  height: 100vh;
+  height: 90vh;
   /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
   overflow-x: hidden;
   /* Enable scrolling on the page. */
@@ -10,11 +11,19 @@
   perspective: 2px;
 }
 
+.section-pic {
+  vertical-align: top;
+  /* Needed for children to be absolutely positioned relative to the parent. */
+  position: relative;
+  /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+  height: 60vh;
+  
+}
 .section {
   /* Needed for children to be absolutely positioned relative to the parent. */
   position: relative;
   /* The height of the container. Must be set, but it doesn't really matter what the value is. */
-  height: 100vh;
+  height: 70vh;
 }
 
 .parallax-text{
@@ -39,7 +48,7 @@
 }
 
 h6{
-    text-indent: 10%;
+  text-indent: 10%;
   padding-right: 10%;
 }
 .parallax::after {
@@ -50,7 +59,6 @@ h6{
   right: 0;
   bottom: 0;
   left: 0;
-
   /* Move the pseudo-element back away from the camera,
    * then scale it back up to fill the viewport.
    * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
@@ -75,4 +83,6 @@ h6{
   background-image: url('https://placekitten.com/g/800/600');
 }
 
-
+a.nav-link {
+  font-size: 20px;
+}

@@ -19,15 +19,15 @@
       <form action="{% url 'main:submit_essay' task.id %}" method="post">
         {% csrf_token %}
 
-        <textarea name="essay" class="write-textarea" rows='7' placeholder='Write your Answer Here' data-min-rows='7'></textarea>
+        <textarea name="essay" id="input" class="write-textarea" rows='7' placeholder='Write your Answer Here' data-min-rows='7'></textarea>
 
-        <p class="wordCount">Words: 0 Time: 1 second</p>
-
+        <p id="wordCount">Words: 0</p>
+        <p id="timer">Time: 0</p>
         <input type="submit" class="btn btn-success" value="Submit">
 
       </form>
 
-      <script src="{% static 'js/auto_resize_textarea.js' %}"></script>
+      <script src="{% static 'js/textarea_script.js' %}"></script>
 
     {% endif %}
 
