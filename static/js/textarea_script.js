@@ -13,17 +13,8 @@ textarea_list.forEach(element => element.addEventListener('keydown', autosize));
 function autosize(){
   var el = this;
   setTimeout(function(){
-    var scrollLeft = window.pageXOffset ||
-    (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-
-    var scrollTop  = window.pageYOffset ||
-    (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    // alert(scrollTop);
     el.style.cssText = 'height:auto;';
     el.style.cssText = 'height:' + el.scrollHeight + 'px';
-  
-
-   window.scrollTo(scrollLeft, scrollTop);
   },0);
 }
 

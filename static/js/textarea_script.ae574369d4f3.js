@@ -13,17 +13,8 @@ textarea_list.forEach(element => element.addEventListener('keydown', autosize));
 function autosize(){
   var el = this;
   setTimeout(function(){
-    var scrollLeft = window.pageXOffset ||
-    (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-
-    var scrollTop  = window.pageYOffset ||
-    (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    // alert(scrollTop);
     el.style.cssText = 'height:auto;';
     el.style.cssText = 'height:' + el.scrollHeight + 'px';
-  
-
-   window.scrollTo(scrollLeft, scrollTop);
   },0);
 }
 
@@ -74,20 +65,21 @@ function convertMilliSecondsToTime(milliseconds){
   seconds = remainder % (60);
   return hours + 'h ' + minutes + 'm ' + seconds + 's'
 }
-
 function timeTracker(){
-  var startTime = new Date();
-  var current = new Date(startTime);
-  var endTime = new Date(startTime);
+  var wordCountText = document.getElementById('wordCount').innerText;
+  if (wordCountText == 'Words: 1'){
+    var startTime = new Date();
+    var current = new Date(startTime);
+    var endTime = new Date(startTime);
 
-  endTime.setMinutes(startTime.getMinutes() + 40);
+    endTime.setMinutes(startTime.getMinutes() + 40);
 
-  timerFunction = setInterval(function() {    
-    current.setSeconds(current.getSeconds() + 1);
-    timer = document.getElementById('timer');
-    duration = Math.abs(current - startTime);
-    timer.innerText = 'Timer: ' + convertMilliSecondsToTime(duration);
-  }, 1000);
+    timerFunction = setInterval(function() {    
+      current.setSeconds(current.getSeconds() + 1);
+      timer = document.getElementById('timer');
+      duration = Math.abs(current - startTime);
+      timer.innerText = 'Timer: ' + convertMilliSecondsToTime(duration);
+    }, 1000);
+  }
 }
-
-timeTracker();
+input.addEventListener('keyup', timeTracker);
