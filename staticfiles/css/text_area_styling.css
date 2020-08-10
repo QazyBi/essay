@@ -9,11 +9,27 @@ textarea {
   width: 100%;
   font-size: 18px;
 }
-p {
-  font-size: 36px;
+.write-page-div {
+  padding-left: 7%;
+  padding-right: 7%;
 }
-p.card-text, p.wordCount  {
-  font-size: 18px;
+.task-textarea {
+  margin: 0 auto;
+  text-align: left;
+}
+
+#wordCount, #timer  {
+  font-size: 20px;
+}
+.horizontal-list {
+  text-align: center;
+}
+ul.horizontal-list li {
+    display: inline-block;
+    padding-left: 100px;
+}
+#control-n-stats {
+  display: table;
 }
 pre, .write-textarea, #region1-left_div {
   font-family: 'Indie Flower', cursive;
@@ -36,7 +52,7 @@ img.region1-image {
   height: 100%;
 }
 
-/*a.nav-link {
+a.nav-link {
   font-size: 20px;
 }
-*/
+

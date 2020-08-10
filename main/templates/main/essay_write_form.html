@@ -13,23 +13,38 @@
       <p><strong>{{ error_msg }}</strong></p>
     {% else %}
 
-      <textarea readonly>{{ task.title }}</textarea>
-      <hr class="mt-0 mb-4">
+    <div class="write-page-div">   
+      <textarea readonly class="task-textarea">
+You should spend about 40 minutes on this task.
+
+Write about the following topic.
+
+{{ task.title }}
+        
+You should write at least 250 words.
+      </textarea>
+  
+          
       
       <form action="{% url 'main:submit_essay' task.id %}" method="post">
+        <div id="control-n-stats">
+          <ul class="horizontal-list">
+            <li><p id="wordCount">Words: 0</p></li>
+            <li><p id="timer">Time: 0</p></li>
+            <li><input type="submit" class="btn btn-success" value="Submit"></li>
+          </ul>
+        </div>
+      <hr class="mt-0 mb-4">
         {% csrf_token %}
 
         <textarea name="essay" id="input" class="write-textarea" rows='7' placeholder='Write your Answer Here' data-min-rows='7'></textarea>
 
-        <p id="wordCount">Words: 0</p>
-        <p id="timer">Time: 0</p>
-        <input type="submit" class="btn btn-success" value="Submit">
 
       </form>
 
       <script src="{% static 'js/textarea_script.js' %}"></script>
-
-    {% endif %}
+  </div>
+  {% endif %}
 
     
 {% endblock %}
