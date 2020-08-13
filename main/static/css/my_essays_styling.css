@@ -1,0 +1,22 @@
+a.nav-link {
+  font-size: 20px;
+}
+
+#no-objects-card {
+  border: black solid 2px;
+  text-align: center;
+  width: 50%;
+  height: 150px;
+  margin-left: 25%;
+  margin-top: 10%;
+  padding-top: 2%;
+}
+
+#write-essay-btn {
+  width: 20%;
+  height: 30%;
+}
+
+img.card-image {
+  height: 200px;
+}

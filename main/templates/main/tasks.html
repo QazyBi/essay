@@ -11,7 +11,7 @@
         {% for task in task_list %}        
         <div class="col-auto bg-light mb-3">
             <div class="card" style="width: 15rem;">
-                <img src="{{ task.category.image_url }}" class="card-img-top" alt="Image not found">
+                <img src="{{ task.category.image_url }}" class="card-img-top card-image" alt="Image not found">
                 <div class="card-header">{{ task.category }}</div>
                 <div class="card-body">
                     <p class="card-text">{{ task }}</p>

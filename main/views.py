@@ -103,9 +103,13 @@ def me_edit(request):
 @login_required
 def my_essays(request):
     query_set = Essay.objects.filter(user_id=request.user.id)
-    context = {
-        "essay_list": query_set,
-    }
+    if len(query_set) != 0:
+        context = {
+            "essay_list": query_set,
+        }
+    else:
+        context = {}
+
     return render(request, "main/my_essays.html", context)
 
 
