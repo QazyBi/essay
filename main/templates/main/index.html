@@ -5,15 +5,15 @@
     <link rel="stylesheet" href="{% static 'css/text_area_styling.css' %}">
 {% endblock %}
 
+<!-- justify-content-center -->
 {% block content %}
-     <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-    <section>
-    <div id="region1-left_div">
+
+<div class="container-fluid">
+  <div class="row">   
+    <div class="col-md-5" id="region1-left_div">
         <br>
         <h1><i>Welcome, this is Essy</i></h1>
-        <pre>
+<pre>
 
 Here you can write essays to
 More than 1000 essay questions
@@ -24,18 +24,17 @@ Share via social networks
 And Many Many More...
 
 <a id="random_link" href="{% url 'main:ith_task' task_id=1 %}">Answer to Random Task</a>
-        </pre>
+</pre> 
     </div>
-    <div id="region1-right_div">
+
+
+    <div class="col-md-7">
         <img class="region1-image" src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format">
     </div>
-    </section>
-            </div>
-          </div>
-        </div>
 
-        
-     <!-- Make random among valid task numbers -->
+  </div>
+</div>
+    <!-- Make random among valid task numbers -->
     <script>
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
