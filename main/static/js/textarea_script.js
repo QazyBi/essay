@@ -19,11 +19,16 @@ function timeTracker(){
 
   endTime.setMinutes(startTime.getMinutes() + 40);
 
+  timer = document.getElementById('timer');
+  timer.style.cssText = 'color: green';
+
   timerFunction = setInterval(function() {    
     current.setSeconds(current.getSeconds() + 1);
-    timer = document.getElementById('timer');
     duration = Math.abs(current - startTime);
     timer.innerText = 'Timer: ' + convertMilliSecondsToTime(duration);
+    if(endTime <= current) {
+      timer.style.cssText = 'color: red';
+    }
   }, 1000);
 }
 
@@ -61,7 +66,6 @@ function autosize(){
 
 // This Part for Counting Word Number
 input = document.getElementById('input');
-count = document.getElementById('wordCount');
 
 input.addEventListener('keyup', function(e){
   wordCounter(e.target.value);
@@ -81,12 +85,19 @@ function isWord(string){
   return false;
 }
 
+var count = document.getElementById('wordCount');
 function wordCounter(text){
   var text = input.value.split(' ');
   var wordCount = 0;
+  
   for (var i=0; i < text.length; i++){
     if (text[i] !== '' && isWord(text[i])){
       wordCount++;
+    }
+    if(wordCount > 250){
+      count.style.cssText = 'color: green';
+    }else{
+      count.style.cssText = 'color: black';
     }
   }
   count.innerText = 'Words: ' + wordCount;  

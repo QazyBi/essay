@@ -10,8 +10,16 @@
         <p>{{ error }}</p>
     {% else %}
         <textarea>{{ essay.task.title }}</textarea>
+        <div id="control-n-stats">
+          <ul class="horizontal-list">
+            <li><p id="wordCount">Words: 0</p></li>
+            <li><p id="timer">Time: 0</p></li>
+            <li><input type="submit" class="btn btn-success" value="Edit the Essay"></li>
+          </ul>
+        </div>
         <hr class="mt-0 mb-4">
         <textarea readonly rows='9' data-min-rows='9'>{{ essay.text }}</textarea>
-        <script src="{% static 'js/auto_resize_textarea.js' %}"></script>
+
+        <!-- <script src="{% static 'js/textarea_script.js' %}"></script> -->
     {% endif %}
 {% endblock %}
