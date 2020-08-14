@@ -25,4 +25,5 @@ urlpatterns = [
     path('me/edit', views.me_edit, name='me_edit'),
     path('me/essays', views.my_essays, name='my_essays'),
     path('me/essays/<int:essay_id>', views.my_ith_essay, name='my_ith_essay'),
+    path('me/essays/<int:essay_id>/update', views.update_essay, name='update_essay'),
 ]

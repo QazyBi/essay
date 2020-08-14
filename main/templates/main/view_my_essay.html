@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/text_area_styling.css' %}">
+    <link rel="stylesheet" href="{% static 'css/view_edit_essay.css' %}">
 {% endblock %}
 
 {% block content %}    
@@ -10,16 +10,22 @@
         <p>{{ error }}</p>
     {% else %}
         <textarea>{{ essay.task.title }}</textarea>
+        <form action="{% url 'main:update_essay' essay.id %}" method="post">
         <div id="control-n-stats">
           <ul class="horizontal-list">
             <li><p id="wordCount">Words: 0</p></li>
-            <li><p id="timer">Time: 0</p></li>
-            <li><input type="submit" class="btn btn-success" value="Edit the Essay"></li>
+            <li><p id="">Time: 0</p></li>
+            <li><input type="button" class="btn btn-success" id="edit-essay-btn" value="Edit the Essay"></li>
+            <li><input type="submit" class="btn btn-success" id="submit-btn" value="Submit"></li>
+            <li><input type="button" class="btn btn-success" id="cross-btn" value="X"></li>
           </ul>
         </div>
         <hr class="mt-0 mb-4">
-        <textarea readonly rows='9' data-min-rows='9'>{{ essay.text }}</textarea>
 
-        <!-- <script src="{% static 'js/textarea_script.js' %}"></script> -->
+            {% csrf_token %}
+            <textarea readonly name="essay" rows='9' id='input' data-min-rows='9'>{{ essay.text }}</textarea>
+        </form>
+        <script src="{% static 'js/word_counter.js' %}"></script>
+        <script src="{% static 'js/edit_essay.js' %}"></script>
     {% endif %}
 {% endblock %}

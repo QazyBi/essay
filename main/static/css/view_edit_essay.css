@@ -1,0 +1,45 @@
+/* navbar */
+a.nav-link {
+  font-size: 20px;
+}
+
+/* view_my_essay.html */
+.write-page-div {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+#wordCount, #timer {
+  font-size: 20px;
+}
+.horizontal-list {
+  text-align: center;
+}
+ul.horizontal-list li {
+    display: inline-block;
+    padding-left: 100px;
+}
+#control-n-stats {
+  display: table;
+}
+
+textarea {   
+  border-color: Transparent;
+  display: block;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+  height:auto;
+  padding:50px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.write-textarea{
+  font-family: 'Indie Flower', cursive;
+  font-size: 24px;
+}
+
+#submit-btn, #cross-btn {
+  display: none;
+}

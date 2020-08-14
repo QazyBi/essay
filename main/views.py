@@ -45,7 +45,26 @@ def submit_essay(request, task_id):
         })
     else:
         Essay.objects.create(task=task, user=request.user, text=answer)
-        return HttpResponseRedirect(reverse('main:tasks'))
+        return HttpResponseRedirect(reverse('main:my_essays'))
+
+
+@login_required
+def update_essay(request, essay_id):
+    # task = get_object_or_404(Task, pk=task_id)
+    answer = request.POST["essay"]
+    if len(answer) == 0:
+        # TODO: change this to the view_my_essay.html and corresponding context
+        return render(request, "main/essay_write_form.html", {
+            "error_msg": "You did not provide answer.",
+        })
+    else:
+        essay = Essay.objects.get(id=essay_id, user=request.user.id)
+        if essay is not None:
+            essay.text = answer
+            essay.save()
+        else:
+            Essay.objects.create(task=essay.task, user=request.user, text=answer)
+        return HttpResponseRedirect(reverse('main:my_essays'))
 
 
 def signup_redirect(request):
@@ -56,7 +75,7 @@ def signup_redirect(request):
             form.save()
             return HttpResponseRedirect(reverse('main:login'))
         else:
-            print(form.errors.as_data())
+            # print(form.errors.as_data())
             context = {
                 'form': form,
             }
