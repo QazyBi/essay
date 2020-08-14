@@ -16,14 +16,19 @@ urlpatterns = [
 
     path(r'^login/$', LoginView.as_view(), name='login'),
     path(r'^logout/$', LogoutView.as_view(), name='logout'),
+
     path(r'^reset-password/$', PasswordResetView.as_view(), name='password_reset'),
     path(r'^reset-password/done/$', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path(r'^reset-password/complete/$', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
+    # Profile
     path('me', views.me, name='me'),
     path('me/edit', views.me_edit, name='me_edit'),
+
+    # Essays
     path('me/essays', views.my_essays, name='my_essays'),
     path('me/essays/<int:essay_id>', views.my_ith_essay, name='my_ith_essay'),
     path('me/essays/<int:essay_id>/update', views.update_essay, name='update_essay'),
+    path('me/essays/<int:essay_id>/delete', views.delete_essay, name='delete_essay'),
 ]

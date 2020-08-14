@@ -3,29 +3,40 @@
 {% load static %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/view_edit_essay.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block content %}    
     {% if error %}
-        <p>{{ error }}</p>
+        <h3>{{ error }}</h3>
     {% else %}
-        <textarea>{{ essay.task.title }}</textarea>
+    <div class="view-edit-page-div">   
+        <textarea readonly="">{{ essay.task.title }}</textarea>
+        
         <form action="{% url 'main:update_essay' essay.id %}" method="post">
+        
         <div id="control-n-stats">
           <ul class="horizontal-list">
             <li><p id="wordCount">Words: 0</p></li>
-            <li><p id="">Time: 0</p></li>
+            <!-- <li><p id="">Time: 0</p></li> -->
             <li><input type="button" class="btn btn-success" id="edit-essay-btn" value="Edit the Essay"></li>
-            <li><input type="submit" class="btn btn-success" id="submit-btn" value="Submit"></li>
             <li><input type="button" class="btn btn-success" id="cross-btn" value="X"></li>
+            <li><input type="submit" class="btn btn-success" id="submit-btn" value="Submit"></li>
           </ul>
         </div>
         <hr class="mt-0 mb-4">
 
             {% csrf_token %}
-            <textarea readonly name="essay" rows='9' id='input' data-min-rows='9'>{{ essay.text }}</textarea>
+            <textarea readonly name="essay" rows='9' id='input' data-min-rows='9' class='write-textarea'>{{ essay.text }}</textarea>
+        </form>
+    
+        <hr class="mt-0 mb-4">    
+        <form action="{% url 'main:delete_essay' essay.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn"><i class="fa fa-trash"></i> Delete</button>
         </form>
         <script src="{% static 'js/word_counter.js' %}"></script>
         <script src="{% static 'js/edit_essay.js' %}"></script>
+    </div>
     {% endif %}
 {% endblock %}

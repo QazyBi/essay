@@ -67,6 +67,14 @@ def update_essay(request, essay_id):
         return HttpResponseRedirect(reverse('main:my_essays'))
 
 
+@login_required
+def delete_essay(request, essay_id):
+    essay = Essay.objects.get(pk=essay_id)
+    if essay is not None:
+        essay.delete()
+    return HttpResponseRedirect(reverse('main:my_essays'))
+
+
 def signup_redirect(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
