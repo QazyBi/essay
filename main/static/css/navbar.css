@@ -1,3 +1,7 @@
 a.nav-link {
   font-size: 20px;
 }
+
+#navbar-website-name {
+    padding-left: 3%;
+}
