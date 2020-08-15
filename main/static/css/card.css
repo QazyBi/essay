@@ -1,7 +1,14 @@
-a.nav-link {
-  font-size: 20px;
+@import 'navbar.css';
+
+.card-image {
+  height: 240px;
 }
 
+p.card-text{
+  font-size: 18px;
+}
+
+/* Styling of Card with text: No object... */
 #no-objects-card {
   border: black solid 2px;
   text-align: center;
@@ -15,8 +22,4 @@ a.nav-link {
 #write-essay-btn {
   width: 20%;
   height: 30%;
-}
-
-img.card-image {
-  height: 200px;
 }

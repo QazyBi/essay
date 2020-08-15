@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/view_edit_essay.css' %}">
+    <link rel="stylesheet" href="{% static 'css/write_view_essay.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
@@ -10,7 +10,7 @@
     {% if error %}
         <h3>{{ error }}</h3>
     {% else %}
-    <div class="view-edit-page-div">   
+    <div class="write-view-edit-page-div">   
         <textarea readonly="">{{ essay.task.title }}</textarea>
         
         <form action="{% url 'main:update_essay' essay.id %}" method="post">
