@@ -2,17 +2,16 @@
 {% load static %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-<!-- Profile Page inspiration https://bootsnipp.com/snippets/4d03W -->
 {% endblock %}
 
 {% block content %}
 
-<main class="wrapper">
+<div class="wrapper">
   <section class="section-pic parallax parallax-text bg1">
      <h2><strong>{{ user.first_name}} {{ user.last_name }}</strong></h2>
-     <h4>@{{ user.username }}</h4>
+     <h4 class="username-text">@{{ user.username }}</h4>
      
-     <h5><a href="{% url 'main:my_essays' %}"> {{ essay_number }} essays</a></h5>
+     <h5><a class="essay-count-text" href="{% url 'main:my_essays' %}"> {{ essay_number }} essay(s)</a></h5>
      <!-- <h3>Last Login: {{ user.last_login }}</h3> -->
      <!-- <h3>Registration Date: {{ user.date_joined }}</h3> -->
   </section>
@@ -20,8 +19,14 @@
     <h4>About Me:</h4>
     <h6>Here should be some text about the person. This text will be retrieved from User's account where will be a new field bio. User can change that bio but for now this field will contain temporary message.</h6>
   </section>
+</div>
+{% endblock %}
 
-  <!-- <section class="section parallax bg2"> -->
+
+
+
+
+ <!-- <section class="section parallax bg2"> -->
     
   <!-- <div class="card" style="width: 30rem;">
     <div class="card-body">
@@ -57,5 +62,3 @@
   </div> -->
     
   <!-- </section> -->
-</main>
-{% endblock %}
