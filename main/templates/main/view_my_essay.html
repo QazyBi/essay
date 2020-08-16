@@ -11,8 +11,8 @@
         <h3>{{ error }}</h3>
     {% else %}
     <div class="write-view-edit-page-div">   
-        <textarea readonly="">{{ essay.task.title }}</textarea>
-        
+        <textarea readonly class="task-textarea">{{ essay.task.title }}</textarea>
+        <br>
         <form action="{% url 'main:update_essay' essay.id %}" method="post">
         
         <div id="control-n-stats">
@@ -38,5 +38,6 @@
         <script src="{% static 'js/word_counter.js' %}"></script>
         <script src="{% static 'js/edit_essay.js' %}"></script>
     </div>
+    <br>
     {% endif %}
 {% endblock %}
