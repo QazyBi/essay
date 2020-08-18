@@ -5,9 +5,9 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
 
 app_name = 'main'
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('', views.HomePageView.as_view(), name='homepage'),
 
-    path('tasks', views.tasks, name='tasks'),
+    path('tasks', views.TasksView.as_view(), name='tasks'),
     path('tasks/<int:task_id>/', views.ith_task, name='ith_task'),
     path('tasks/<int:task_id>/submit', views.submit_essay, name='submit_essay'),
 

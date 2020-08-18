@@ -7,22 +7,26 @@ from .models import Task, Essay
 from django.contrib.auth.models import User
 from .forms import SignUpForm
 
-
-def homepage(request):
-    count = Task.objects.all().count()
-    context = {
-        "task_count": count,
-    }
-    return render(request, "main/index.html", context)
+from django.views import generic
 
 
-def tasks(request):
-    query_set = Task.objects.all()
-    context = {
-        "task_list": query_set,
-    }
-    return render(request, "main/tasks.html", context)
+class HomePageView(generic.ListView):
+    template_name = "main/index.html"
+    context_object_name = "task_count"
 
+    def get_queryset(self):
+        """Return number of Tasks."""
+        return Task.objects.all().count()
+
+
+class TasksView(generic.ListView):
+    context_object_name = "task_list"
+    model = Task
+
+
+# class TaskDetailView(generic.DetailView):
+    # context_object_name = "task"
+    # model = Task
 
 @login_required
 def ith_task(request, task_id):
@@ -105,6 +109,7 @@ def me(request):
     return render(request, "main/me.html", context)
 
 
+@login_required
 def me_edit(request):
     user = get_object_or_404(User, pk=request.user.id)
 
