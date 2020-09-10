@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '80(yju^1ex^t()ni785cfr@$!xj#t##jhp1!ds#iunx9u+u&tp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', default=0))
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default='localhost').split(",")
+ALLOWED_HOSTS = ['localhost', 'essy.herokuapp.com', '0.0.0.0']
 
 LOGIN_REDIRECT_URL = '/'
 # Application definition
@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'essay_db',
         'USER': 'essay_db_user',
         'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 

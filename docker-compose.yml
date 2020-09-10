@@ -1,13 +1,24 @@
 version: '3.7'
 services:
-  web:
-    build:
-        context: .
-        dockerfile: ./Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_DB=essay_db"
+      - "POSTGRES_USER=essay_db_user"
+      - "POSTGRES_PASSWORD=password"
     volumes:
-      - ../essay:/usr/src/essay/
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    image: qazybi/repo
+    volumes:
+      - .:/usr/src/essay/
     ports:
-      - 8000:8000
+      - "8000:8000"
     env_file:
-      - ./.env.dev
+      - .env.dev
+    depends_on:
+      - db
+    command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+  postgres_data:
